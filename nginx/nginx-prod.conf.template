@@ -3,8 +3,8 @@ server {
     listen 443 ssl;
     server_name stephentcasey.com www.stephentcasey.com;  
 
-    ssl_certificate /etc/letsencrypt/live/landscape-patterns.stephentcasey.com/fullchain.pem;
-    ssl_certificate_key /etc/letsencrypt/live/landscape-patterns.stephentcasey.com/privkey.pem;
+    ssl_certificate /etc/letsencrypt/live/stephentcasey.com/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/stephentcasey.com/privkey.pem;
     include /etc/letsencrypt/options-ssl-nginx.conf;
     ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem;
 
@@ -64,13 +64,4 @@ server {
         add_header X-nginx-test hi;
     }
 } 
-
-server {  
-    listen 80;  
-    listen [::]:80;  
-    root /var/www/stephentcasey.com;  
-    index website/index.html;  
-    server_name stephentcasey.com www.stephentcasey.com;  
-    location / {    try_files $uri $uri/ =404;  }
-    }
 
