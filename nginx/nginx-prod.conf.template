@@ -1,7 +1,31 @@
 server {
+    listen [::]:443 ssl;
+    listen 443 ssl;
+    server_name stephentcasey.com www.stephentcasey.com;  
+
+    ssl_certificate /etc/letsencrypt/live/landscape-patterns.stephentcasey.com/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/landscape-patterns.stephentcasey.com/privkey.pem;
+    include /etc/letsencrypt/options-ssl-nginx.conf;
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem;
+
+    sendfile on;
+    default_type application/octet-stream;
+    
+    location = /.well-known/assetlinks.json {
+    try_files $uri =404;
+    }
+
+  location / {
+    root  /website;
+    index index.html index.htm;
+    try_files $uri $uri/ =404;
+  }  
+}
+
+server {
     listen [::]:80;
     listen 80;
-    server_name landscape-patterns.stephentcasey.com www.landscape-patterns.stephentcasey.com;
+    server_name stephentcasey.com www.stephentcasey.com;
 
     location /.well-known/acme-challenge/ {
         root /var/www/certbot;
@@ -40,4 +64,13 @@ server {
         add_header X-nginx-test hi;
     }
 } 
+
+server {  
+    listen 80;  
+    listen [::]:80;  
+    root /var/www/stephentcasey.com;  
+    index website/index.html;  
+    server_name stephentcasey.com www.stephentcasey.com;  
+    location / {    try_files $uri $uri/ =404;  }
+    }
 
