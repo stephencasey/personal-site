@@ -19,7 +19,7 @@ curl -L --create-dirs -o etc/letsencrypt/options-ssl-nginx.conf https://raw.gith
 openssl dhparam -out etc/letsencrypt/ssl-dhparams.pem 2048
 
 # Phase 2
-crontab ./etc/crontab
+crontab ./nginx-certbot/etc/crontab
 docker compose -f ./docker-compose-landscape-patterns.yaml up -d 
 docker compose -f ./docker-compose-nginx-certbot.yaml up
 

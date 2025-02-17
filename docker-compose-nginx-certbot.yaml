@@ -4,7 +4,7 @@ services:
     depends_on:
       - serviceName
     build:
-      context: .nginx-certbot/nginx
+      context: ./nginx-certbot/nginx
       args:
         NGINX_CONFIG: nginx-prod.conf.template
     ports:
