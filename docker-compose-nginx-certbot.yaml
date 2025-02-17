@@ -1,6 +1,8 @@
 version: "3"
 services:
   nginx:
+    depends_on:
+      - serviceName
     build:
       context: ./nginx
       args:
