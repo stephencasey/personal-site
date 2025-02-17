@@ -1,0 +1,66 @@
+services:
+  db:
+    container_name: "db"
+    image: "postgres:16"
+    ports:
+      - "5432:5432"
+    env_file:
+      - moondrop-api/.env    
+  moondrop-api:
+    container_name: moondrop-api
+    build: moondrop-api
+    command: sh -c 'python manage.py migrate && gunicorn config.wsgi:application --bind 0.0.0.0:8000'
+    environment:
+      - DB_HOST=db    
+    env_file:
+      - moondrop-api/.env    
+    volumes:
+      - ./django:/code
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+  moondrop-ui:
+    container_name: moondrop-ui
+    build:
+      context: moondrop-ui
+      args: 
+        BUILD_ENVIRONMENT: production
+        NGINX_CONFIG: nginx.conf
+    ports:
+      - "80:80"
+      - 443:443
+    depends_on:
+      - moondrop-api
+    volumes:
+      - ./etc/nginx/templates:/etc/nginx/templates:ro
+      - ./etc/letsencrypt:/etc/letsencrypt:ro
+      - ./certbot/data:/var/www/certbot
+  redis:
+    restart: unless-stopped
+    image: redis:7.0.5-alpine 
+    env_file:
+      - moondrop-api/.env    
+    command: sh -c 'redis-server --requirepass $${REDIS_PASSWORD}'
+    ports:
+      - '6379:6379'
+  celery-worker:
+    build: moondrop-api
+    command: celery -A config worker --loglevel=info --concurrency 1 -E
+    environment:
+      - DB_HOST=db
+    env_file:
+      - moondrop-api/.env    
+    depends_on:
+      - moondrop-api
+      - redis
+  celery-beat:
+    build: moondrop-api
+    command: celery -A config beat -l INFO --scheduler django_celery_beat.schedulers:DatabaseScheduler
+    environment:
+      - DB_HOST=db
+    env_file:
+      - moondrop-api/.env    
+    depends_on:
+      - moondrop-api
+      - redis

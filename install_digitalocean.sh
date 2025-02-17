@@ -1,5 +1,13 @@
 #!/bin/bash
 
+# Clone sub repos
+git clone git@github.com:stephencasey/PatternedLandscapes.git
+git clone git@gitlab.com:moondrop1/moondrop.git
+cd moondrop
+git clone git@gitlab.com:moondrop1/moondrop-api.git
+git clone git@gitlab.com:moondrop1/moondrop-ui.git
+cd ..
+
 # Install docker compose
 mkdir -p ~/.docker/cli-plugins/
 curl -SL https://github.com/docker/compose/releases/download/v2.3.3/docker-compose-linux-x86_64 -o ~/.docker/cli-plugins/docker-compose
@@ -21,5 +29,6 @@ openssl dhparam -out etc/letsencrypt/ssl-dhparams.pem 2048
 # Phase 2
 crontab ./nginx-certbot/etc/crontab
 docker compose -f ./docker-compose-landscape-patterns.yaml up -d 
+docker compose -f ./docker-compose-moondrop.yaml up -d 
 docker compose -f ./docker-compose-nginx-certbot.yaml up
 
