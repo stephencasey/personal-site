@@ -17,7 +17,7 @@ services:
       - nginx
     command: >-
       certonly --reinstall --webroot --webroot-path=/var/www/certbot
-      --email thornhill52320@gmail.com --agree-tos --no-eff-email --non-interactive --expand
+      --email thornhill52320@gmail.com --agree-tos --no-eff-email --non-interactive --expand --preferred-challenges=dns
       -d stephentcasey.com -d '*.stephentcasey.com'
     volumes:
       - ./etc/letsencrypt:/etc/letsencrypt
