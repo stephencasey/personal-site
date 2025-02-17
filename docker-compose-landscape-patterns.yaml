@@ -2,7 +2,7 @@ version: "3"
 services:
   flask:
     container_name: "flask"
-    build: .
+    build: ./landscape-patterns
     ports:
       - "8050:8050"
     command: >-
