@@ -29,7 +29,7 @@ services:
         NGINX_CONFIG: nginx.conf
     ports:
       - "8060:8060"
-      - 443:443
+      - 8070:443
     depends_on:
       - moondrop-api
     volumes:
