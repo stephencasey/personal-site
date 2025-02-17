@@ -1,13 +1,5 @@
 #!/bin/bash
 
-# Clone sub repos
-git clone git@github.com:stephencasey/PatternedLandscapes.git
-git clone git@gitlab.com:moondrop1/moondrop.git
-cd moondrop
-git clone git@gitlab.com:moondrop1/moondrop-api.git
-git clone git@gitlab.com:moondrop1/moondrop-ui.git
-cd ..
-
 # Install docker compose
 mkdir -p ~/.docker/cli-plugins/
 curl -SL https://github.com/docker/compose/releases/download/v2.3.3/docker-compose-linux-x86_64 -o ~/.docker/cli-plugins/docker-compose
