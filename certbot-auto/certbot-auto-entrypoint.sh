@@ -5,7 +5,7 @@ while true; do
 
     certbot certonly \
         --webroot -w /var/www/certbot \
-        -d '*.stephentcasey.com'  -d stephentcasey.com\
+        -d landscape-patterns.stephentcasey.com  -d stephentcasey.com\
         -m thornhill52320@gmail.com \
         --rsa-key-size "2048" \
         --agree-tos \
