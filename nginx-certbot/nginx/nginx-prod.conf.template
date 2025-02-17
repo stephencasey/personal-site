@@ -114,6 +114,7 @@ server{
     }
 
     location / {
+      proxy_pass http://moondrop-ui:8060;
       try_files $uri $uri/ /index.html =404;
     }
 }
