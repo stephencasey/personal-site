@@ -20,6 +20,6 @@ openssl dhparam -out etc/letsencrypt/ssl-dhparams.pem 2048
 
 # Phase 2
 crontab ./etc/crontab
-docker compose -f ./docker-compose-landscape-patterns.yaml up
+docker compose -f ./docker-compose-landscape-patterns.yaml up -d 
 docker compose -f ./docker-compose-nginx-certbot.yaml up
 
