@@ -1,7 +1,7 @@
 server {
     listen [::]:80;
     listen 80;
-    server_name stephentcasey.com www.stephentcasey.com;
+    server_name landscape-patterns.stephentcasey.com www.landscape-patterns.stephentcasey.com;
     location ~/.well-known/acme-challenge {
         allow all;
         root /var/www/certbot;
