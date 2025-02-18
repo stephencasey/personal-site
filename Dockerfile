@@ -20,8 +20,7 @@ ARG NGINX_CONFIG
 COPY $NGINX_CONFIG /etc/nginx/templates/
 COPY /nginx-certbot/nginx/nginx-entrypoint.sh nginx-entrypoint.sh
 COPY /website /website
-COPY --from=node-helper /app/www /usr/share/nginx/html
+COPY --from=node-helper /app/www /usr/share/nginx/periodic
 
 
-EXPOSE 8060
 ENTRYPOINT bash ./nginx-entrypoint.sh
