@@ -1,13 +1,10 @@
 version: "3"
 services:
   nginx:
-    depends_on:
-      - serviceName
     build:
-      context: ./nginx-certbot/nginx
       args:
         BUILD_ENVIRONMENT: production
-        NGINX_CONFIG: nginx-prod.conf.template
+        NGINX_CONFIG: /nginx-certbot/nginx/nginx-prod.conf.template
     ports:
       - 80:80
       - 443:443
