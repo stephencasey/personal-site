@@ -12,7 +12,7 @@ services:
       - 80:80
       - 443:443
     volumes:
-      - ./nginx-certbot/etc/letsencrypt:/etc/letsencrypt:ro
+      - ./etc/letsencrypt:/etc/letsencrypt:ro
       - ./certbot/data:/var/www/certbot
   certbot:
     container_name: certbot
