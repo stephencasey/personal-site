@@ -20,22 +20,6 @@ services:
       - "8000:8000"
     depends_on:
       - db
-  moondrop-ui:
-    container_name: moondrop-ui
-    build:
-      context: moondrop/moondrop-ui
-      args: 
-        BUILD_ENVIRONMENT: production
-        NGINX_CONFIG: nginx.conf
-    ports:
-      - 8060:80
-      - 8070:443
-    depends_on:
-      - moondrop-api
-    volumes:
-      - ./nginx-cerbot/etc/nginx/templates:/etc/nginx/templates:ro
-      - ./nginx-cerbot/etc/letsencrypt:/etc/letsencrypt:ro
-      - ./certbot/data:/var/www/certbot
   redis:
     restart: unless-stopped
     image: redis:7.0.5-alpine 
