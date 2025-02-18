@@ -7,9 +7,9 @@ services:
     ports:
       - 80:80
     volumes:
-      - ./nginx-certbot/etc/nginx/templates-initiate:/etc/nginx/templates
-      - ./etc/letsencrypt:/etc/letsencrypt
-      - ./certbot/data:/var/www/certbot
+      - ./nginx-certbot/nginx-certbot/etc/nginx/templates-initiate:/etc/nginx/templates
+      - ./nginx-certbot/etc/letsencrypt:/etc/letsencrypt
+      - ./nginx-certbot/certbot/data:/var/www/certbot
   certbot:
     container_name: certbot
     image: certbot/certbot:latest
@@ -20,5 +20,5 @@ services:
       --email thornhill52320@gmail.com --agree-tos --no-eff-email --expand -v
       -d stephentcasey.com -d landscape-patterns.stephentcasey.com -d periodic.stephentcasey.com
     volumes:
-      - ./etc/letsencrypt:/etc/letsencrypt
-      - ./certbot/data:/var/www/certbot
+      - ./nginx-certbot/etc/letsencrypt:/etc/letsencrypt
+      - ./nginx-certbot/certbot/data:/var/www/certbot

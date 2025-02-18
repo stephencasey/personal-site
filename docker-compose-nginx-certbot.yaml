@@ -12,7 +12,7 @@ services:
       - 80:80
       - 443:443
     volumes:
-      - ./etc/letsencrypt:/etc/letsencrypt:ro
+      - ./nginx-certbot/etc/letsencrypt:/etc/letsencrypt:ro
       - ./certbot/data:/var/www/certbot
   certbot:
     container_name: certbot
@@ -24,5 +24,5 @@ services:
       --email thornhill52320@gmail.com --agree-tos --no-eff-email --expand -v
       -d stephentcasey.com -d landscape-patterns.stephentcasey.com -d periodic.stephentcasey.com
     volumes:
-      - ./etc/letsencrypt:/etc/letsencrypt
+      - ./nginx-certbot/etc/letsencrypt:/etc/letsencrypt
       - ./certbot/data:/var/www/certbot

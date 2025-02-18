@@ -15,11 +15,10 @@ docker compose -f ./docker-compose-initiate.yml up certbot
 docker compose -f ./docker-compose-initiate.yml down
 
 # some configurations for let's encrypt
-curl -L --create-dirs -o etc/letsencrypt/options-ssl-nginx.conf https://raw.githubusercontent.com/certbot/certbot/master/certbot-nginx/certbot_nginx/_internal/tls_configs/options-ssl-nginx.conf
-openssl dhparam -out etc/letsencrypt/ssl-dhparams.pem 2048
+curl -L --create-dirs -o nginx-certbot/etc/letsencrypt/options-ssl-nginx.conf https://raw.githubusercontent.com/certbot/certbot/master/certbot-nginx/certbot_nginx/_internal/tls_configs/options-ssl-nginx.conf
+openssl dhparam -out nginx-certbot/etc/letsencrypt/ssl-dhparams.pem 2048
 
 # Phase 2
 crontab ./nginx-certbot/etc/crontab
 docker compose -f ./docker-compose-landscape-patterns.yaml up -d 
 docker compose -f ./docker-compose-nginx-certbot.yaml up
-
