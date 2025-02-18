@@ -93,6 +93,8 @@ server{
     gzip_comp_level   9;
 
     root /usr/share/nginx/periodic;
+    index index.html index.htm;
+
 
     location /api {
       proxy_pass http://moondrop-api;
