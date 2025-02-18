@@ -4,7 +4,7 @@ WORKDIR /app
 ENV NODE_OPTIONS=--max_old_space_size=2048
 RUN npm cache clean --force
 
-COPY /moondrop/moondrop-ui .
+COPY ../moondrop/moondrop-ui .
 
 RUN npm install
 
