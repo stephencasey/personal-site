@@ -28,7 +28,7 @@ services:
         BUILD_ENVIRONMENT: production
         NGINX_CONFIG: nginx.conf
     ports:
-      - "8060:8060"
+      - 8060:80
       - 8070:443
     depends_on:
       - moondrop-api
