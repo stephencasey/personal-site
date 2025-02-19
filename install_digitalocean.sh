@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 # Install docker compose
 sudo mkdir -p ~/.docker/cli-plugins/

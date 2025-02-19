@@ -1,4 +1,5 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
-sudo cp ./nginx-certbot/cron/cron_job.sh ~/
+echo 'test'
+cp ./nginx-certbot/cron/cron_job.sh ~/
 
