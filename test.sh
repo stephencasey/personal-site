@@ -1,4 +1,3 @@
 #!/usr/bin/env bash
 
-cp ./nginx-certbot/cron/cron_job.sh ~/
-crontab ./nginx-certbot/cron/crontab
+echo '0 3  * * *  ~/personal-site-deployment/cron/cron_job.sh' | crontab -
