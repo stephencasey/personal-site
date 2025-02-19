@@ -19,8 +19,7 @@ curl -L --create-dirs -o nginx-certbot/etc/letsencrypt/options-ssl-nginx.conf ht
 openssl dhparam -out nginx-certbot/etc/letsencrypt/ssl-dhparams.pem 2048
 
 # Phase 2
-cp ./nginx-certbotc
-crontab ./nginx-certbot/etc/crontab
+echo "0 3  * * *  ~/personal-site-deployment/cron/cron_job.sh" | crontab -
 docker compose -f ./docker-compose-moondrop.yaml up -d 
 docker compose -f ./docker-compose-landscape-patterns.yaml up -d 
 docker compose -f ./docker-compose-nginx-certbot.yaml up
