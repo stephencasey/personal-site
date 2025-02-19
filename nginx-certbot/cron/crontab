@@ -1,2 +1,2 @@
 # m h  dom mon dow   command
-0 3  * * *  ~/cron_job.sh
+0 3  * * *  ~/personal-site-deployment/cron/cron_job.sh
