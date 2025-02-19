@@ -21,6 +21,3 @@ COPY $NGINX_CONFIG /etc/nginx/templates/
 COPY /nginx-certbot/nginx/nginx-entrypoint.sh nginx-entrypoint.sh
 COPY /website /website
 COPY --from=node-helper /app/www /usr/share/nginx/periodic
-
-
-ENTRYPOINT bash ./nginx-entrypoint.sh
