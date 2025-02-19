@@ -1,3 +1,3 @@
 #!/bin/bash
 
-sudo crontab ./nginx-certbot/cron/crontab
+crontab ./nginx-certbot/cron/crontab
