@@ -10,5 +10,5 @@ else
 fi
 
 # renew certbot certificate
-docker compose -f ./docker-compose-nginx-certbot.yaml run --rm certbot
-docker compose -f ./docker-compose-nginx-certbot.yaml exec nginx nginx -s reload
+docker compose -f /home/thornhill523/personal-site-deployment/docker-compose-nginx-certbot.yaml run --rm certbot
+docker compose -f /home/thornhill523/personal-site-deployment/docker-compose-nginx-certbot.yaml exec nginx nginx -s reload
